@@ -22,6 +22,11 @@ func TestValidateError(t *testing.T) {
 			in:     &Input{UserId: 2, PaymentType: "bad"},
 			expErr: errors.New("payment type must be card"),
 		},
+		{
+			name:   "not_items_case",
+			in:     &Input{UserId: 2, PaymentType: "card"},
+			expErr: errors.New("items can't be blank"),
+		},
 	}
 	for _, tCase := range cases {
 		err := Validate(*tCase.in)
