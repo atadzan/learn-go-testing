@@ -34,3 +34,12 @@ func TestValidateError(t *testing.T) {
 		require.EqualError(t, tCase.expErr, err.Error())
 	}
 }
+func TestValidate(t *testing.T) {
+	in := Input{
+		UserId:      1,
+		PaymentType: "card",
+		Items:       []string{"order-1"},
+	}
+	err := Validate(in)
+	require.NoError(t, err)
+}
